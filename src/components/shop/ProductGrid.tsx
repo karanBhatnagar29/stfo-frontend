@@ -7,96 +7,120 @@ import { ArrowRight } from "lucide-react";
 const products = [
   {
     id: "carry-on",
-    name: "The Carry-On",
-    description: "Perfect for 3-5 days. Fits in the overhead bin.",
+    name: "HELIOS Carry-On",
+    description: "3-5 day trips with smart organization",
     price: "$295",
-    color: "bg-[#e5e5e5]", // Neutral Light Gray
+    specs: "22\" x 14\" x 9\" | 8.2 lbs",
+    color: "bg-gradient-to-br from-slate-300 to-slate-400",
     link: "/products/carry-on",
-    imagePlaceholder: "linear-gradient(to bottom right, #f5f5f5, #e0e0e0)"
   },
   {
     id: "check-in",
-    name: "The Check-In",
-    description: "For longer trips. Maximum capacity, minimum bulk.",
+    name: "HELIOS Check-In",
+    description: "Extended travel with premium durability",
     price: "$395",
-    color: "bg-[#27272a]", // Dark Gray
+    specs: "28\" x 18\" x 11\" | 9.8 lbs",
+    color: "bg-gradient-to-br from-amber-700 to-amber-900",
     textColor: "text-white",
     link: "/products/check-in",
-    imagePlaceholder: "linear-gradient(to bottom right, #333, #111)"
   },
   {
     id: "sps-kit",
     name: "SPS™ Packing Kit",
-    description: "The complete modular system. Fits both sizes.",
+    description: "Complete modular system for both sizes",
     price: "$95",
-    color: "bg-[#f4f4f5]", // Off-white
+    specs: "9 Intelligent Packing Modules",
+    color: "bg-gradient-to-br from-slate-100 to-slate-200",
     link: "/products/sps-system",
-    imagePlaceholder: "linear-gradient(to bottom right, #fafafa, #f0f0f0)"
   }
 ];
 
 export function ProductGrid() {
   return (
-    <section className="py-32 bg-background">
+    <section className="py-24 md:py-40 bg-background">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16">
-            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-foreground">
-                The Collection.
-            </h2>
-            <Link href="/products" className="hidden md:flex items-center text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-                View all products <ArrowRight className="ml-2 w-4 h-4" />
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
+            <div>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-3 text-balance">
+                  Premium Luggage, Engineered Smart.
+              </h2>
+              <p className="text-muted-foreground max-w-xl">
+                Each piece designed for travelers who value intelligence and style.
+              </p>
+            </div>
+            <Link href="/products" className="hidden md:inline-flex items-center gap-2 px-6 py-3 border border-foreground/20 rounded-lg hover:border-foreground/40 transition-colors">
+                <span className="text-sm font-medium">All Products</span>
+                <ArrowRight className="w-4 h-4" />
             </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {products.map((product, index) => (
             <motion.div
               key={product.id}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
-              className="group relative flex flex-col justify-between overflow-hidden rounded-3xl aspect-[4/5] cursor-pointer"
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ delay: index * 0.12, duration: 0.6 }}
+              className="group relative flex flex-col h-full rounded-xl overflow-hidden bg-white border border-border hover:border-border/80 transition-all duration-500 hover:shadow-xl"
             >
-              <Link href={product.link} className="absolute inset-0 z-10">
-                <span className="sr-only">View {product.name}</span>
-              </Link>
-              
-              {/* Background */}
-              <div 
-                className={`absolute inset-0 transition-transform duration-700 group-hover:scale-105 ${product.color}`} 
-                style={{ background: product.imagePlaceholder }}
-              />
-
-              {/* Texture/Noise overlay for premium feel */}
-              <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
-              
-              <div className="relative z-20 p-8 h-full flex flex-col justify-between">
-                <div>
-                    <h3 className={`text-2xl font-semibold tracking-tight ${product.textColor || 'text-foreground'}`}>
-                        {product.name}
-                    </h3>
-                    <p className={`mt-2 text-sm font-medium opacity-70 ${product.textColor || 'text-foreground'}`}>
-                        {product.description}
-                    </p>
+              {/* Product Image Area */}
+              <div className={`relative aspect-[3/4] overflow-hidden ${product.color} flex items-center justify-center`}>
+                <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.5),transparent)]" />
+                
+                {/* Minimalist product silhouette */}
+                <div className="relative w-32 h-48 rounded-lg border-2 border-white/30 backdrop-blur-sm flex items-center justify-center">
+                  <span className="text-white/40 text-4xl font-light">▢</span>
                 </div>
 
-                <div className="flex items-center justify-between">
-                    <span className={`text-base font-semibold ${product.textColor || 'text-foreground'}`}>
-                        {product.price}
-                    </span>
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center backdrop-blur-md bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300`}>
-                         <ArrowRight className={`w-4 h-4 ${product.textColor || 'text-foreground'}`} />
-                    </div>
+                {/* Product badge */}
+                <div className="absolute top-4 right-4">
+                  <span className="inline-block px-3 py-1 bg-white/90 text-foreground text-xs font-semibold rounded-full">
+                    Best Seller
+                  </span>
+                </div>
+
+                {/* Hover overlay with CTA */}
+                <Link href={product.link} className="absolute inset-0 flex items-end justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 bg-black/20">
+                  <button className="px-6 py-3 bg-white text-foreground font-semibold rounded-lg hover:bg-white/90 transition-colors w-full">
+                    View Details
+                  </button>
+                </Link>
+              </div>
+
+              {/* Product Info */}
+              <div className="flex-1 p-6 flex flex-col justify-between">
+                <div>
+                  <h3 className={`text-xl font-bold tracking-tight mb-2 ${product.textColor || 'text-foreground'}`}>
+                    {product.name}
+                  </h3>
+                  <p className={`text-sm mb-4 ${product.textColor ? 'text-white/70' : 'text-muted-foreground'}`}>
+                    {product.description}
+                  </p>
+                  <p className={`text-xs font-medium tracking-wide ${product.textColor ? 'text-white/60' : 'text-muted-foreground/60'}`}>
+                    {product.specs}
+                  </p>
+                </div>
+
+                <div className="flex items-center justify-between pt-4 border-t border-border/40">
+                  <span className={`text-2xl font-bold ${product.textColor || 'text-foreground'}`}>
+                    {product.price}
+                  </span>
+                  <motion.div
+                    whileHover={{ x: 4 }}
+                    className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center group-hover:bg-accent group-hover:text-white transition-all"
+                  >
+                    <ArrowRight className="w-5 h-5 text-accent group-hover:text-white transition-colors" />
+                  </motion.div>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
         
-        <div className="mt-12 text-center md:hidden">
-            <Link href="/products" className="inline-flex items-center text-sm font-medium text-foreground">
-                View all products <ArrowRight className="ml-2 w-4 h-4" />
+        <div className="mt-16 text-center md:hidden">
+            <Link href="/products" className="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background rounded-lg font-semibold hover:bg-foreground/90 transition-colors">
+                View all products <ArrowRight className="w-4 h-4" />
             </Link>
         </div>
       </div>

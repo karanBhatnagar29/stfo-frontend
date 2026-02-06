@@ -14,8 +14,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SPS | Smart Packing System",
-  description: "Packing, perfected.",
+  title: "HELIOS | Intelligent Travel Luggage",
+  description: "The world's first smart suitcase with integrated packing system. Premium aluminum construction, lifetime warranty, and intelligent organization.",
+  keywords: "luggage, suitcase, carry-on, check-in, smart packing, travel gear",
+  authors: [{ name: "STFO Inc." }],
+  openGraph: {
+    title: "HELIOS | Intelligent Travel Luggage",
+    description: "Revolutionary smart suitcase with integrated SPS system",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

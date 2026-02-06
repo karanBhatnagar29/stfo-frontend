@@ -53,22 +53,58 @@ const PRODUCTS = [
 
 export default function ProductsPage() {
   return (
-    <div className="min-h-screen pb-24">
-      <div className="container mx-auto px-6 pt-24 pb-16">
-        <h1 className="text-5xl md:text-7xl font-black tracking-tighter mb-6">
-          The Collection.
-        </h1>
-        <p className="max-w-xl text-xl text-muted-foreground leading-relaxed">
-          Every piece is integrated with our Smart Packing System™. 
-          Choose your vessel based on your journey, not just dimensions.
-        </p>
+    <div className="min-h-screen pb-32">
+      {/* Hero Section */}
+      <div className="container mx-auto px-6 pt-28 pb-20 border-b border-border">
+        <div className="max-w-3xl">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground mb-6 text-balance">
+            The Complete Collection
+          </h1>
+          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+            Every HELIOS suitcase is engineered with our Smart Packing System™. Select your size and color based on your journey, knowing intelligent organization comes standard.
+          </p>
+        </div>
+
+        {/* Filter/Sort Controls */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 mt-12 pt-8 border-t border-border">
+          <div className="text-sm text-muted-foreground">
+            Showing {PRODUCTS.length} products
+          </div>
+          <div className="flex gap-3">
+            <button className="px-4 py-2 text-sm font-medium border border-border rounded-lg hover:border-accent hover:text-accent transition-colors">
+              Size
+            </button>
+            <button className="px-4 py-2 text-sm font-medium border border-border rounded-lg hover:border-accent hover:text-accent transition-colors">
+              Price
+            </button>
+            <button className="px-4 py-2 text-sm font-medium border border-border rounded-lg hover:border-accent hover:text-accent transition-colors">
+              Popularity
+            </button>
+          </div>
+        </div>
       </div>
 
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+      {/* Products Grid */}
+      <div className="container mx-auto px-6 pt-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-max">
           {PRODUCTS.map((product) => (
             <ProductCard key={product.id} {...product} />
           ))}
+        </div>
+      </div>
+
+      {/* Bottom CTA */}
+      <div className="mt-32 py-20 bg-secondary/50 border-t border-border">
+        <div className="container mx-auto px-6 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+            Can't decide?
+          </h2>
+          <p className="text-muted-foreground mb-8">
+            Take our quick questionnaire to find your perfect HELIOS
+          </p>
+          <button className="px-8 py-3 bg-accent text-white font-semibold rounded-lg hover:bg-accent/90 transition-colors">
+            Find Your Size
+          </button>
         </div>
       </div>
     </div>

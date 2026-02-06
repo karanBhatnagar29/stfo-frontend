@@ -29,38 +29,41 @@ export function ShopNavbar() {
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out border-b border-transparent",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out border-b",
         isScrolled
-          ? "bg-background/80 backdrop-blur-md border-border/50 py-3"
-          : "bg-transparent py-5"
+          ? "bg-background/95 backdrop-blur-xl border-border/40 py-3 shadow-sm"
+          : "bg-background/50 backdrop-blur-md border-transparent py-5"
       )}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="group">
-          <span className="text-xl font-bold tracking-tighter text-foreground group-hover:opacity-80 transition-opacity">
-            STFO.
+        <Link href="/" className="group flex items-center gap-2">
+          <div className="w-8 h-8 rounded-lg bg-accent/20 flex items-center justify-center group-hover:bg-accent/30 transition-colors">
+            <span className="text-sm font-bold text-accent">S</span>
+          </div>
+          <span className="text-xl font-bold tracking-tight text-foreground group-hover:opacity-80 transition-opacity hidden sm:inline">
+            STFO
           </span>
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
-          <NavLink href="/products">Suitcases</NavLink>
-          <NavLink href="/products/sps-system">The System</NavLink>
-          <NavLink href="/about">Philosophy</NavLink>
+        <div className="hidden md:flex items-center gap-10">
+          <NavLink href="/products">Shop</NavLink>
+          <NavLink href="/products/sps-system">SPS System</NavLink>
+          <NavLink href="/about">About</NavLink>
         </div>
 
         {/* Actions */}
-        <div className="flex items-center gap-4">
-          <Link href="/dashboard" className="hidden md:block">
-            <span className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+        <div className="flex items-center gap-3 md:gap-4">
+          <Link href="/dashboard" className="hidden md:inline-flex">
+            <span className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors px-4 py-2 rounded-lg hover:bg-secondary/50">
               Account
             </span>
           </Link>
           
-          <button className="relative p-2 text-foreground hover:bg-secondary rounded-full transition-colors group">
+          <button className="relative p-2.5 text-foreground hover:bg-secondary/50 rounded-lg transition-colors group">
             <ShoppingBag className="w-5 h-5" />
-            <span className="absolute top-1 right-1 w-2 h-2 bg-foreground rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+            <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-accent rounded-full" />
           </button>
 
           {/* Mobile Menu Toggle */}
